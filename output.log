@@ -163,3 +163,21 @@ collected 3 items
 testapp.py ...                                                           [100%]
 
 ============================== 3 passed in 0.11s ===============================
+============================= test session starts ==============================
+platform darwin -- Python 3.10.10, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/tanguyrenaudie/Documents/TanguyML/ChatwithGPT
+plugins: anyio-3.6.2
+collected 3 items
+
+testapp.py ...                                                           [100%]
+
+============================== 3 passed in 0.07s ===============================
+============================= test session starts ==============================
+platform darwin -- Python 3.10.10, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/tanguyrenaudie/Documents/TanguyML/ChatwithGPT
+plugins: anyio-3.6.2
+collected 3 items
+
+testapp.py ...                                                           [100%]
+
+============================== 3 passed in 0.07s ===============================
