@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, jsonify
 from werkzeug.utils import secure_filename
 import os
 from ingest import save_file_to_database
+import traceback
 app = Flask(__name__)
 
 
@@ -31,19 +32,21 @@ def upload_file():
         return 'No file was uploaded.', 400
 
 
-@app.route('/process_text', methods=['POST'])
+@app.route('/process-text', methods=['POST'])
 def process_text():
-    user_text = request.json.get('text', '')
+    try:
+        data = request.get_json()
+        input_text = data['text']
 
-    # Process the user input and generate a response
-    # This is just an example; replace it with your actual processing logic
-    response_text = f"You entered: {user_text}"
+        # Process the input_text and generate the processed_text
+        # Just an example, replace with your processing logic
+        processed_text = input_text.upper()
 
-    return jsonify(result=response_text)
-
-
-def save_file_to_database(filepath):
-    return False
+        return jsonify({'processed_text': processed_text})
+    except Exception as e:
+        # Log the full traceback of the exception
+        print(traceback.format_exc())
+        return jsonify({'error': str(e)}), 500
 
 
 if __name__ == '__main__':
