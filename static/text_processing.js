@@ -19,7 +19,7 @@ document.getElementById('text-form').addEventListener('submit', async (e) => {
         if (response.ok) {
             const responseData = await response.json();
             console.log('Response data:', responseData); // Add this line
-            const processedText = responseData.processed_text;
+            const processedText = responseData.answer;
             responseDiv.innerText = processedText;
 
         } else {
