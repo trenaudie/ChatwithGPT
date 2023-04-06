@@ -47,4 +47,4 @@ def save_file_to_database(filepath):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port= 5005)
