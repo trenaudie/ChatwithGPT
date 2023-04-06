@@ -21,6 +21,7 @@ def upload_file():
 
         # Process the file and save it to the database
         # You will need to implement this part based on the type of database you are using
+        print('about to use uploaded file')
         save_file_to_database(filepath)
 
         # Remove the temporary file
