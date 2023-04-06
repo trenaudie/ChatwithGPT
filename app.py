@@ -1,3 +1,4 @@
+from getchain import get_chain
 from flask import Flask, request, render_template, jsonify
 from werkzeug.utils import secure_filename
 import os
@@ -21,8 +22,12 @@ handler.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
-getattributes = lambda obj : [attr for attr in dir(obj) if attr.startswith('__') is False]
-from getchain import get_chain
+
+
+def getattributes(obj): return [attr for attr in dir(
+    obj) if attr.startswith('__') is False]
+
+
 app = Flask(__name__)
 
 prompt_template = """Use the context below to write a 100 word blog post about the topic below:
@@ -36,8 +41,10 @@ PROMPT = PromptTemplate(
 
 chat_history = []
 llm = HuggingFaceHub()
-vectordb = Chroma(persist_directory='dbdir', embedding_function=OpenAIEmbeddings())
+vectordb = Chroma(persist_directory='dbdir',
+                  embedding_function=OpenAIEmbeddings())
 chain = get_chain(vectordb)
+
 
 @app.route('/')
 def index():
@@ -55,7 +62,7 @@ def upload_file():
 
         # Process the file and save it to the database
         # You will need to implement this part based on the type of database you are using
-        index_creator = save_file_to_database(filepath)
+        save_file_to_database(vectordb, filepath)
 
         # Remove the temporary file
         os.remove(filepath)
