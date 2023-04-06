@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, jsonify
 from werkzeug.utils import secure_filename
 import os
-
+from ingest import save_file_to_database
 app = Flask(__name__)
 
 
