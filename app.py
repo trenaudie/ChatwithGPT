@@ -65,13 +65,13 @@ def upload_file():
         return 'No file was uploaded.', 400
 
 
-@app.route('/process_text', methods=['POST'])
-def process_text():
+@app.route('/qa', methods=['POST'])
+def answerQuestion():
     try:
         data = request.get_json()
         question = data['text']
         currentchat = {"context": chat_history, "topic": question}
-        answer = chain.apply(currentchat)
+        answer = chain.acall(currentchat)
         chat_history.append((question, answer))
         logger.info(answer)
         return jsonify({'processed_text': answer})
@@ -85,4 +85,3 @@ def process_text():
 if __name__ == '__main__':
     app.run(port=5005, debug=True)
 
-    

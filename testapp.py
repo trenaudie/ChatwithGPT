@@ -30,7 +30,7 @@ def testquestion(question = None):
     if not question:
         question = 'What is the capital of France?'
     data = {'text': question}
-    url = 'http://localhost:5005/process_text'
+    url = 'http://localhost:5005/qa'
 
     response = requests.post(url, headers=headers, data=json.dumps(data))
     if response.ok:
