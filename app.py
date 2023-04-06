@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
 from werkzeug.utils import secure_filename
 import os
-
+from ingest import save_file_to_database 
 app = Flask(__name__)
 
 
@@ -31,8 +31,6 @@ def upload_file():
         return 'No file was uploaded.', 400
 
 
-def save_file_to_database(filepath):
-    return False
 
 
 if __name__ == '__main__':
