@@ -62,7 +62,7 @@ def upload_file():
 
         # Process the file and save it to the database
         # You will need to implement this part based on the type of database you are using
-        save_file_to_database()
+        save_file_to_database(vectordb, filepath)
 
         # Remove the temporary file
         os.remove(filepath)

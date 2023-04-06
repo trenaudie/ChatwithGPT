@@ -12,7 +12,7 @@ from langchain.indexes import VectorstoreIndexCreator
 env_var_name = "OPENAI_API_KEY"
 env_var_name_huggingface = "HUGGINGFACEHUB_API_TOKEN"
 # Get the value of your OpenAPI key from the provider of the API
-key_value = "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"
+key_value = "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"
 keyvalue_huggingface = "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"
 # Set the environment variable with the key value
 os.environ[env_var_name] = key_value
@@ -39,27 +39,23 @@ def getChunks(contentdict):
         sources.append(
             Document(page_content=contentdict[file], metadata={"source": sourcename}))
 
-    for source in source:
+    for source in sources:
         sourcename = file
         for chunk in splitter.split_text(source.page_content):
             yield Document(page_content=chunk, metadata=source.metadata)
 
+# what about first search index
 
-def saveDBStore(contentdict: dict, dbdir: str):
+
+def saveDBStore(search_index: Chroma, contentdict: dict):
     textchunks = getChunks(contentdict)
-    search_index = Chroma.from_documents(
-        textchunks, OpenAIEmbeddings(), persist_directory=dbdir)
+    search_index.add_documents(textchunks)
     search_index.persist()
 
 
-def save_file_to_database(filepath, search_index):
+def save_file_to_database(search_index: Chroma, filepath: str):
     with open(filepath, 'r') as f:
         content = f.read()
         contentDict = {filepath: content}
         print(contentDict)
-        dbdir = f"{filepath}_dbstore"
-        saveDBStore(contentDict, dbdir)
-
-
-if __name__ == '__main__':
-    save_file_to_database("article.txt")
+        saveDBStore(search_index, contentDict)
