@@ -74,4 +74,4 @@ def process_text():
 
 
 if __name__ == '__main__':
-    app.run(port=5005)
+    app.run(port=5005, debug=True)

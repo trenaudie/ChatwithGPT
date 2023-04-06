@@ -1,0 +1,183 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.10.10, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/tanguyrenaudie/Documents/TanguyML/ChatwithGPT
+plugins: anyio-3.6.2
+collected 1 item
+
+testapp.py .                                                             [100%]
+
+============================== 1 passed in 0.07s ===============================
+============================= test session starts ==============================
+platform darwin -- Python 3.10.10, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/tanguyrenaudie/Documents/TanguyML/ChatwithGPT
+plugins: anyio-3.6.2
+collected 1 item
+
+testapp.py .                                                             [100%]
+
+============================== 1 passed in 0.07s ===============================
+============================= test session starts ==============================
+platform darwin -- Python 3.10.10, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/tanguyrenaudie/Documents/TanguyML/ChatwithGPT
+plugins: anyio-3.6.2
+collected 2 items
+
+testapp.py ..                                                            [100%]
+
+============================== 2 passed in 0.08s ===============================
+============================= test session starts ==============================
+platform darwin -- Python 3.10.10, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/tanguyrenaudie/Documents/TanguyML/ChatwithGPT
+plugins: anyio-3.6.2
+collected 2 items
+
+testapp.py .F                                                            [100%]
+
+=================================== FAILURES ===================================
+___________________________________ testnot ____________________________________
+
+    def testnot():
+>       checkrequest('GET', '/not', 200, None)
+
+testapp.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+method = 'GET', path = '/not', status = 200, content = None, kwargs = {}
+url = 'http://localhost:5005/not', response = <Response [404]>
+@py_assert1 = 404, @py_assert3 = False
+@py_format5 = '404\n{404 = <Response [404]>.status_code\n} == 200'
+@py_format7 = 'assert 404\n{404 = <Response [404]>.status_code\n} == 200'
+
+    def checkrequest(method: str, path: str, status: int, content: str = None, **kwargs):
+        """Checks if the request to localhost returns the expected response"""
+        url = f'http://localhost:5005{path}'
+        response = requests.request(method, url, **kwargs)
+    
+>       assert response.status_code == status
+E       assert 404 == 200
+E        +  where 404 = <Response [404]>.status_code
+
+testapp.py:8: AssertionError
+=========================== short test summary info ============================
+FAILED testapp.py::testnot - assert 404 == 200
+========================= 1 failed, 1 passed in 0.14s ==========================
+============================= test session starts ==============================
+platform darwin -- Python 3.10.10, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/tanguyrenaudie/Documents/TanguyML/ChatwithGPT
+plugins: anyio-3.6.2
+collected 3 items
+
+testapp.py ..F                                                           [100%]
+
+=================================== FAILURES ===================================
+__________________________________ testupload __________________________________
+
+    def testupload():
+        url = "http://localhost:5005/upload"
+        with open('article.txt', 'rb') as f:
+            file_data = {'document': f}
+            response = requests.post(url, files=file_data)
+>           assert response.status_code == 200
+E           assert 500 == 200
+E            +  where 500 = <Response [500]>.status_code
+
+testapp.py:25: AssertionError
+=========================== short test summary info ============================
+FAILED testapp.py::testupload - assert 500 == 200
+========================= 1 failed, 2 passed in 0.16s ==========================
+============================= test session starts ==============================
+platform darwin -- Python 3.10.10, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/tanguyrenaudie/Documents/TanguyML/ChatwithGPT
+plugins: anyio-3.6.2
+collected 3 items
+
+testapp.py ..F                                                           [100%]
+
+=================================== FAILURES ===================================
+__________________________________ testupload __________________________________
+
+    def testupload():
+        url = "http://localhost:5005/upload"
+        with open('article.txt', 'rb') as f:
+            file_data = {'document': f}
+            response = requests.post(url, files=file_data)
+>           assert response.status_code == 200
+E           assert 500 == 200
+E            +  where 500 = <Response [500]>.status_code
+
+testapp.py:25: AssertionError
+=========================== short test summary info ============================
+FAILED testapp.py::testupload - assert 500 == 200
+========================= 1 failed, 2 passed in 0.13s ==========================
+============================= test session starts ==============================
+platform darwin -- Python 3.10.10, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/tanguyrenaudie/Documents/TanguyML/ChatwithGPT
+plugins: anyio-3.6.2
+collected 3 items
+
+testapp.py ...                                                           [100%]
+
+============================== 3 passed in 0.09s ===============================
+============================= test session starts ==============================
+platform darwin -- Python 3.10.10, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/tanguyrenaudie/Documents/TanguyML/ChatwithGPT
+plugins: anyio-3.6.2
+collected 3 items
+
+testapp.py ...                                                           [100%]
+
+============================== 3 passed in 0.09s ===============================
+============================= test session starts ==============================
+platform darwin -- Python 3.10.10, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/tanguyrenaudie/Documents/TanguyML/ChatwithGPT
+plugins: anyio-3.6.2
+collected 3 items
+
+testapp.py ...                                                           [100%]
+
+============================== 3 passed in 0.07s ===============================
+============================= test session starts ==============================
+platform darwin -- Python 3.10.10, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/tanguyrenaudie/Documents/TanguyML/ChatwithGPT
+plugins: anyio-3.6.2
+collected 3 items
+
+testapp.py ...                                                           [100%]
+
+============================== 3 passed in 0.08s ===============================
+============================= test session starts ==============================
+platform darwin -- Python 3.10.10, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/tanguyrenaudie/Documents/TanguyML/ChatwithGPT
+plugins: anyio-3.6.2
+collected 3 items
+
+testapp.py ...                                                           [100%]
+
+============================== 3 passed in 0.07s ===============================
+============================= test session starts ==============================
+platform darwin -- Python 3.10.10, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/tanguyrenaudie/Documents/TanguyML/ChatwithGPT
+plugins: anyio-3.6.2
+collected 3 items
+
+testapp.py ...                                                           [100%]
+
+============================== 3 passed in 0.11s ===============================
+============================= test session starts ==============================
+platform darwin -- Python 3.10.10, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/tanguyrenaudie/Documents/TanguyML/ChatwithGPT
+plugins: anyio-3.6.2
+collected 3 items
+
+testapp.py ...                                                           [100%]
+
+============================== 3 passed in 0.07s ===============================
+============================= test session starts ==============================
+platform darwin -- Python 3.10.10, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/tanguyrenaudie/Documents/TanguyML/ChatwithGPT
+plugins: anyio-3.6.2
+collected 3 items
+
+testapp.py ...                                                           [100%]
+
+============================== 3 passed in 0.07s ===============================
