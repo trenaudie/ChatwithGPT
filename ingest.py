@@ -12,13 +12,13 @@ from langchain.indexes import VectorstoreIndexCreator
 env_var_name = "OPENAI_API_KEY"
 env_var_name_huggingface = "HUGGINGFACEHUB_API_TOKEN"
 # Get the value of your OpenAPI key from the provider of the API
-key_value = "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"
+key_value = "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" #most recent one
 keyvalue_huggingface = "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"
 # Set the environment variable with the key value
 os.environ[env_var_name] = key_value
 os.environ[env_var_name_huggingface] = keyvalue_huggingface
 
-def getDocs():
+def getDocsendwithtxt():
     """Returns list of Document() objects from articles.txt files"""
     for file in os.listdir():
         if file.endswith(".txt"):
@@ -46,6 +46,7 @@ def getChunks(contentdict):
 
 
 
+
 def saveDBStore(contentdict: dict, dbdir: str):
     textchunks = getChunks(contentdict)
     search_index = Chroma.from_documents(textchunks, OpenAIEmbeddings(), persist_directory = dbdir)
@@ -63,3 +64,4 @@ def save_file_to_database(filepath, search_index):
 
 if __name__=='__main__':
     save_file_to_database("article.txt")
+
