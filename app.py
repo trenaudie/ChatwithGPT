@@ -41,7 +41,7 @@ def upload_file():
 
         # Process the file and save it to the database
         # You will need to implement this part based on the type of database you are using
-        index_creator = save_file_to_database(filepath)
+        save_file_to_database()
 
         # Remove the temporary file
         os.remove(filepath)
@@ -57,11 +57,11 @@ def process_text():
         data = request.get_json()
         input_text = data['text']
 
-        request = {"context": chat_history, "topic": input_text}
+        current_chat = {"context": chat_history, "topic": input_text}
 
         # Process the input_text and generate the processed_text
         # Just an example, replace with your processing logic
-        answer = chain.apply(input_text)
+        answer = chain.apply(current_chat)
 
         chat_history.append((input_text, answer))
 
