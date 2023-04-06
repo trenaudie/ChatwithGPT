@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 from werkzeug.utils import secure_filename
 import os
 
@@ -29,6 +29,17 @@ def upload_file():
         return 'File uploaded and saved to the database.', 200
     else:
         return 'No file was uploaded.', 400
+
+
+@app.route('/process_text', methods=['POST'])
+def process_text():
+    user_text = request.json.get('text', '')
+
+    # Process the user input and generate a response
+    # This is just an example; replace it with your actual processing logic
+    response_text = f"You entered: {user_text}"
+
+    return jsonify(result=response_text)
 
 
 def save_file_to_database(filepath):

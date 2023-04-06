@@ -4,19 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document and Text Processing</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <title>Document Upload</title>
 </head>
 
 <body>
-    <form id="upload-form">
-        <input type="file" name="document" id="document" accept=".pdf,.doc,.docx,.txt">
-        <button type="submit">Upload Document</button>
-    </form>
+    <!-- Document upload form -->
+    <div class="document-section">
+        <form id="upload-form">
+            <label for="document">Upload a document:</label>
+            <input type="file" name="document" id="document" accept=".pdf,.doc,.docx,.txt">
+            <button type="submit">Upload Document</button>
+        </form>
+        <div id="upload-response"></div>
+    </div>
 
-    <div id="response"></div>
 
-    <script src="upload.js"></script>
+    <!-- Text input form -->
+    <div class="text-section">
+        <form id="text-form">
+            <label for="user-input">Enter your text:</label>
+            <input type="text" name="user-input" id="user-input">
+            <button type="submit">Submit</button>
+        </form>
+        <div id="text-response"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='upload.js') }}"></script>
+    <script src="{{ url_for('static', filename='text_processing.js') }}"></script>
 </body>
 
 </html>

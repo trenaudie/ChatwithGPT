@@ -1,9 +1,9 @@
-document.getElementById('upload-form').addEventListener('submit', async function (event) {
-    event.preventDefault();
+document.getElementById('upload-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-    const documentInput = document.getElementById('document');
+    const fileInput = document.getElementById('document');
     const formData = new FormData();
-    formData.append('document', documentInput.files[0]);
+    formData.append('document', fileInput.files[0]);
 
     try {
         const response = await fetch('/upload', {
@@ -11,17 +11,16 @@ document.getElementById('upload-form').addEventListener('submit', async function
             body: formData,
         });
 
-        const responseText = await response.text();
-        document.getElementById('response').innerText = responseText;
+        const responseDiv = document.getElementById('upload-response');
 
         if (response.ok) {
-            // Handle successful upload
-            documentInput.value = ''; // Clear the input field
+            responseDiv.innerText = 'File uploaded and saved.';
+            fileInput.value = ''; // Clear the input field
         } else {
-            // Handle errors in the response
+            responseDiv.innerText = 'Error uploading the file.';
         }
     } catch (error) {
-        // Handle network errors or other issues with the fetch call
-        document.getElementById('response').innerText = 'An error occurred while uploading the file.';
+        console.error('Error:', error);
+        document.getElementById('upload-response').innerText = 'An error occurred while uploading the file.';
     }
 });
