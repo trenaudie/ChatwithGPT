@@ -3,6 +3,11 @@ from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.schema import Document
 
+from langchain.document_loaders import TextLoader
+from langchain.text_splitter import CharacterTextSplitter
+
+from langchain.indexes import VectorstoreIndexCreator
+
 # Determine the name of the environment variable you want to use for the OpenAPI key
 env_var_name = "OPENAI_API_KEY"
 env_var_name_huggingface = "HUGGINGFACEHUB_API_TOKEN"
@@ -25,9 +30,20 @@ def getDocs():
 
 def getChunks(contentdict):
     """Returns list of Document() objects from {file:filecontent} dictionary"""
-    for file in contentdict.keys():
+    splitter = CharacterTextSplitter(separator=" ", chunk_size=512, chunk_overlap=0)
+    sources = []
+
+    for file in contentdict.keys(): 
         sourcename = file
-        yield Document(page_content=contentdict[file], metadata= {"source": sourcename})
+        sources.append(Document(page_content=contentdict[file], metadata= {"source": sourcename}))
+
+    for source in source:
+        sourcename = file
+        for chunk in splitter.split_text(source.page_content):
+            yield Document(page_content=chunk, metadata=source.metadata)
+
+
+
 
 
 def saveDBStore(contentdict: dict, dbdir: str):
@@ -36,7 +52,7 @@ def saveDBStore(contentdict: dict, dbdir: str):
     search_index.persist()
 
 
-def save_file_to_database(filepath):
+def save_file_to_database(filepath, search_index):
     with open(filepath, 'r') as f:
         content = f.read()
         contentDict = {filepath: content}
