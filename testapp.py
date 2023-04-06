@@ -1,4 +1,4 @@
-import requests
+import requests, json
 
 def checkrequest(method: str, path: str, status: int, content: str = None, **kwargs):
     """Checks if the request to localhost returns the expected response"""
@@ -25,7 +25,20 @@ def testupload():
         assert response.status_code == 200
            
 
+def testquestion(question = None):
+    headers = {'Content-type': 'application/json'}
+    if not question:
+        question = 'What is the capital of France?'
+    data = {'text': question}
+    url = 'http://localhost:5005/process_text'
+
+    response = requests.post(url, headers=headers, data=json.dumps(data))
+    if response.ok:
+        response_data = json.loads(response.content)
+        processed_text = response_data['processed_text']
+        print(processed_text)
+    else:
+        print(f'Request failed with status code {response.status_code}')
 
 if __name__=="__main__":
-    response = requests.get('http://localhost:5005')
-    print(response.content)
+    testquestion('tell me about israel')

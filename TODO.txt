@@ -1,0 +1,4 @@
+- update getChunks. From a number of temp .txt files, split using character splitter, and yield a list of Documents. like in testingTanguy
+    - use chat-langchain ingest.py as a template
+
+

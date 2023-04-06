@@ -4,26 +4,40 @@ import os
 from ingest import save_file_to_database
 from response import generate_blog_post
 import traceback
-
+import logging
 from langchain.chains import LLMChain
 from langchain.llms.fake import FakeListLLM
 from langchain import HuggingFaceHub
 from langchain.prompts import PromptTemplate
+from langchain.vectorstores import Chroma
+from langchain.embeddings import OpenAIEmbeddings
 
+logger = logging.getLogger('myapp')
+logger.setLevel(logging.INFO)
+
+# Create a file handler and add it to the logger
+handler = logging.FileHandler('myapp.log')
+handler.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+getattributes = lambda obj : [attr for attr in dir(obj) if attr.startswith('__') is False]
+from getchain import get_chain
 app = Flask(__name__)
 
 prompt_template = """Use the context below to write a 100 word blog post about the topic below:
     Context: {context}
     Topic: {topic}
     Blog post:"""
+
 PROMPT = PromptTemplate(
     template=prompt_template, input_variables=["context", "topic"]
 )
 
 chat_history = []
 llm = HuggingFaceHub()
-chain = LLMChain(llm=llm, prompt=PROMPT)
-
+vectordb = Chroma(persist_directory='dbdir', embedding_function=OpenAIEmbeddings())
+chain = get_chain(vectordb)
 
 @app.route('/')
 def index():
@@ -55,16 +69,11 @@ def upload_file():
 def process_text():
     try:
         data = request.get_json()
-        input_text = data['text']
-
-        request = {"context": chat_history, "topic": input_text}
-
-        # Process the input_text and generate the processed_text
-        # Just an example, replace with your processing logic
-        answer = chain.apply(input_text)
-
-        chat_history.append((input_text, answer))
-
+        question = data['text']
+        currentchat = {"context": chat_history, "topic": question}
+        answer = chain.apply(currentchat)
+        chat_history.append((question, answer))
+        logger.info(answer)
         return jsonify({'processed_text': answer})
 
     except Exception as e:
@@ -75,3 +84,5 @@ def process_text():
 
 if __name__ == '__main__':
     app.run(port=5005, debug=True)
+
+    
