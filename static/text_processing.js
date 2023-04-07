@@ -21,7 +21,7 @@ document.getElementById('text-form').addEventListener('submit', async (e) => {
             const responseData = await response.json();
             console.log('Response data:', responseData); // Add this line
 
-            const processedText = responseData.answer;
+            const processedText = responseData.processed_text;
             responseDiv.innerText = processedText;
 
         } else {

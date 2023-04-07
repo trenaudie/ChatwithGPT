@@ -2,13 +2,15 @@ from getchain import get_chain
 from flask import Flask, request, render_template, jsonify
 from werkzeug.utils import secure_filename
 import os
-from ingest import save_file_to_database
+from utils.ingest import save_file_to_database
 import traceback
 from langchain.prompts import PromptTemplate
 from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
 import json
 from utils.logger import logger
+from utils.database_management import read_file_list
+from config import Config
 
 from config import Config
 
@@ -33,6 +35,7 @@ PROMPT = PromptTemplate(
 )
 
 chat_history = []
+list_of_files = read_file_list()
 vectordb = Chroma(persist_directory='dbdir',
                   embedding_function=OpenAIEmbeddings())
 chain = get_chain(vectordb, PROMPT)
@@ -50,6 +53,7 @@ def upload_file():
     if uploaded_file:
         # Save the file temporarily
         filename = secure_filename(uploaded_file.filename)
+        list_of_files.append(filename)
         filepath = os.path.join('temp', filename)
         uploaded_file.save(filepath)
 
@@ -64,6 +68,13 @@ def upload_file():
         return 'File uploaded and saved to the database.', 200
     else:
         return 'No file was uploaded.', 400
+
+
+@app.route('/update_file_list')
+def update_file_list():
+    list_of_files = read_file_list()
+
+    return jsonify({'lines': list_of_files})
 
 
 @app.route('/qa', methods=['POST'])
