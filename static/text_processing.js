@@ -10,11 +10,12 @@ document.getElementById('text-form').addEventListener('submit', async (e) => {
     }
 
     try {
-        const response = await fetch('/process_text', {
+        const response = await fetch('/qa', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text: userInput }),
         });
+
 
         if (response.ok) {
             const responseData = await response.json();
@@ -28,6 +29,6 @@ document.getElementById('text-form').addEventListener('submit', async (e) => {
         }
     } catch (error) {
         console.error('Error:', error);
-        responseDiv.innerText = 'Error processing the text.';
+        responseDiv.innerText = 'Python Error processing the text.';
     }
 });
