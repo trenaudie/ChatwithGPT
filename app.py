@@ -78,7 +78,6 @@ def answerQuestion():
         for k in chat_history:
             logger.info(k)
 
-        logger.info(answer['source_documents'])
         logger.info('-----------------')
         page_contents = [
             doc.page_content for doc in answer['source_documents']]
