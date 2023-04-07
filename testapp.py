@@ -1,4 +1,6 @@
-import requests, json
+import requests
+import json
+
 
 def checkrequest(method: str, path: str, status: int, content: str = None, **kwargs):
     """Checks if the request to localhost returns the expected response"""
@@ -8,6 +10,7 @@ def checkrequest(method: str, path: str, status: int, content: str = None, **kwa
     assert response.status_code == status
     if content is not None:
         assert response.content.decode('utf-8') == content
+
 
 def test_homepage():
     checkrequest('GET', '/', 200, None)
@@ -23,14 +26,14 @@ def testupload():
         file_data = {'document': f}
         response = requests.post(url, files=file_data)
         assert response.status_code == 200
-           
 
-def testquestion(question = None):
+
+def testquestion(question=None):
     headers = {'Content-type': 'application/json'}
     if not question:
         question = 'What is the capital of France?'
     data = {'text': question}
-    url = 'http://localhost:5005/qa'
+    url = 'http://localhost:5006/qa'
 
     response = requests.post(url, headers=headers, data=json.dumps(data))
     if response.ok:
@@ -40,5 +43,6 @@ def testquestion(question = None):
     else:
         print(f'Request failed with status code {response.status_code}')
 
-if __name__=="__main__":
-    testquestion('tell me about israel')
+
+if __name__ == "__main__":
+    testquestion('tell me about economic suffering')

@@ -7,7 +7,7 @@
     <title>Document and Text Processing</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
-
+    
 <body>
     <!-- Document upload form -->
     <div class="document-section">
@@ -27,9 +27,11 @@
             <input type="text" name="user-input" id="user-input">
             <button type="submit">Submit</button>
         </form>
-        <div id="text-response"></div>
+        <div id="text-response">
+            <label for="chat-output">Chat Output:</label>
+            <textarea id="chat-output" rows="10" cols="50"></textarea>
+        </div>
     </div>
-
     <script src="{{ url_for('static', filename='upload.js') }}"></script>
     <script src="{{ url_for('static', filename='text_processing.js') }}"></script>
 </body>

@@ -1,4 +1,11 @@
 - update getChunks. From a number of temp .txt files, split using character splitter, and yield a list of Documents. like in testingTanguy
     - use chat-langchain ingest.py as a template
 
+- find way to get more or less text, 
+- to query for top k in similarity score, or 
+- to query from the above x similarity score.
 
+
+References :
+https://github.com/hwchase17/chroma-langchain/blob/master/persistent-qa.ipynb
+https://python.langchain.com/en/latest/modules/chains/index_examples/qa_with_sources.html
