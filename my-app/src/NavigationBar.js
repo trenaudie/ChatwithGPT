@@ -1,6 +1,7 @@
 import React from 'react';
 import './NavigationBar.css';
-
+import './FileUpload.js'
+import FileUpload from './FileUpload.js';
 function NavigationBar({ sources, setSources }) {
   const handleSourceSubmit = (event) => {
     event.preventDefault();
@@ -18,11 +19,12 @@ function NavigationBar({ sources, setSources }) {
             <li key={index}>{source}</li>
           ))}
         </ul>
-        <input type="text" name="sourceInput" />
+        <FileUpload/>
         <button type="submit">Add Source</button>
       </form>
     </nav>
   );
 }
+
 
 export default NavigationBar;

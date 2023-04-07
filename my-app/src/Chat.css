@@ -1,0 +1,15 @@
+.Chat {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: scroll;
+  }
+  
+  .Chat .chat-bubble {
+    align-self: flex-start;
+  }
+  
+  .Chat .chat-bubble.outgoing {
+    align-self: flex-end;
+  }
+  

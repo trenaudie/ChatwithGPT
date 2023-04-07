@@ -1,0 +1,28 @@
+.NavigationBar {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    background-color: #222222;
+    color: #ffffff;
+    padding: 20px;
+  }
+  
+  .NavigationBar .source-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .NavigationBar .source-list-item {
+    margin-bottom: 10px;
+  }
+  
+  .NavigationBar .source-list-item a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .NavigationBar .source-list-item a:hover {
+    text-decoration: underline;
+  }
+  
