@@ -6,6 +6,19 @@
 - to query from the above x similarity score.
 
 
+  npm start
+    Starts the development server.
+  npm run build
+    Bundles the app into static files for production.
+  npm test
+    Starts the test runner.
+  npm run eject
+    Removes this tool and copies build dependencies, configuration files
+    and scripts into the app directory. If you do this, you can’t go back!
+We suggest that you begin by typing:
+  cd my-app
+  npm start
+
 References :
 https://github.com/hwchase17/chroma-langchain/blob/master/persistent-qa.ipynb
 https://python.langchain.com/en/latest/modules/chains/index_examples/qa_with_sources.html

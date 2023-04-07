@@ -7,7 +7,7 @@
     <title>Document and Text Processing</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
-    
+
 <body>
     <!-- Document upload form -->
     <div class="document-section">
@@ -17,18 +17,23 @@
             <button type="submit">Upload Document</button>
         </form>
         <div id="upload-response"></div>
-    </div>
-
+    </div>  
+    <br>
 
     <!-- Text input form -->
     <div class="text-section">
         <form id="text-form">
-            <label for="user-input">Enter your text:</label>
-            <input type="text" name="user-input" id="user-input">
-            <button type="submit">Submit</button>
+            <div class="search-bar">
+                <label for="search-input">Question</label>
+                <input type="text" name="search-input" id="search-input" placeholder="Search...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
         </form>
+    </div>
+    <br>
+    <div>
         <div id="text-response">
-            <label for="chat-output">Chat Output:</label>
+            <label for="chat-output">Answer</label>
             <textarea id="chat-output" rows="10" cols="50"></textarea>
         </div>
     </div>
