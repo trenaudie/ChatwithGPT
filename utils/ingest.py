@@ -8,9 +8,11 @@ from langchain.document_loaders import TextLoader
 from langchain.text_splitter import CharacterTextSplitter
 
 from langchain.indexes import VectorstoreIndexCreator
-
+from utils.database_management import write_to_file_list
 
 from utils.logger import logger
+
+
 def getDocs():
     """Returns list of Document() objects from articles.txt files"""
     for file in os.listdir():
@@ -20,9 +22,10 @@ def getDocs():
                 yield Document(page_content=f.read(), metadata={"source": github_url})
 
 
-def saveChunksToStore(search_index: Chroma,contentdict):
+def saveChunksToStore(search_index: Chroma, contentdict):
     """Returns list of Document() objects from {file:filecontent} dictionary"""
-    splitter = CharacterTextSplitter(separator=" ", chunk_size=512, chunk_overlap=0)
+    splitter = CharacterTextSplitter(
+        separator=" ", chunk_size=512, chunk_overlap=0)
     sources = []
 
     for file in contentdict.keys():
@@ -34,17 +37,17 @@ def saveChunksToStore(search_index: Chroma,contentdict):
     for source in sources:
         sourcename = file
         for chunk in splitter.split_text(source.page_content):
-            textchunks.append(Document(page_content=chunk, metadata=source.metadata))
+            textchunks.append(
+                Document(page_content=chunk, metadata=source.metadata))
 
     # what about first search index
     search_index.add_documents(textchunks)
     search_index.persist()
 
-    
-
 
 def save_file_to_database(search_index: Chroma, filepath: str):
-    _, file_extension = os.path.splitext(filepath)
+    filename, file_extension = os.path.splitext(filepath)
+    filename.replace("\\temp", "")
     if file_extension.lower() == '.pdf':
         pdf_reader = PyPDF2.PdfReader(filepath)
         content = ""
@@ -53,11 +56,14 @@ def save_file_to_database(search_index: Chroma, filepath: str):
             content += page.extract_text()
 
     elif file_extension.lower() == '.txt':
-            with open(filepath, 'r') as file:
-                content = file.read()
+        with open(filepath, 'r') as file:
+            content = file.read()
     else:
-        print(f"Invalid file type: {filepath}. Only PDF and text files are supported.")
+        print(
+            f"Invalid file type: {filepath}. Only PDF and text files are supported.")
         raise ValueError("Invalid file type.")
-    
+
     content_dict = {filepath: content}
-    saveChunksToStore(search_index,content_dict)
+    write_to_file_list(filepath)
+
+    saveChunksToStore(search_index, content_dict)

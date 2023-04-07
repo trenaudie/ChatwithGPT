@@ -2,15 +2,17 @@ from getchain import get_chain
 from flask import Flask, request, render_template, jsonify
 from werkzeug.utils import secure_filename
 import os
-from ingest import save_file_to_database
+from utils.ingest import save_file_to_database
 import traceback
 from langchain.prompts import PromptTemplate
 from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
 import json
 from utils.logger import logger
+from utils.database_management import read_file_list
+from config import Config
 
-os.environ['OPENAI_API_KEY'] = "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"
+os.environ['OPENAI_API_KEY'] = Config.openai_api_key
 print(os.environ['OPENAI_API_KEY'])
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = "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"
 
@@ -34,6 +36,7 @@ chat_history = []
 vectordb = Chroma(persist_directory='dbdir',
                   embedding_function=OpenAIEmbeddings())
 chain = get_chain(vectordb, PROMPT)
+list_of_files = read_file_list()
 print(vectordb._collection.metadata)
 
 
@@ -48,6 +51,8 @@ def upload_file():
     if uploaded_file:
         # Save the file temporarily
         filename = secure_filename(uploaded_file.filename)
+        list_of_files.append(filename)
+
         filepath = os.path.join('temp', filename)
         uploaded_file.save(filepath)
 
@@ -76,7 +81,6 @@ def answerQuestion():
         for k in chat_history:
             logger.info(k)
 
-        logger.info(answer['source_documents'])
         logger.info('-----------------')
         page_contents = [
             doc.page_content for doc in answer['source_documents']]
