@@ -35,88 +35,6 @@ THE EDITORIA
 2023-04-07 13:54:46,695 - INFO - ('israel is friends with the usa?', 'yes')
 2023-04-07 13:54:46,697 - INFO - [Document(page_content='the country’s economy,\ngiven air travel is the only practical way to get in and out for nearly all travelers. I wanted to stand with\nIsrael against Hamas, by highlighting the safety of travel to Israel and urging the Obama administration to\nreverse course — which it soon did, to its credit.\nGreeting me on the tarmac that day was Prime Minister Benjamin Netanyahu. He thanked me for my\nsupport, and I thanked him for Israel’s support of New York City and the United States after the Sept. 11\nattacks. Close', metadata={'source': 'article3.txt'}), Document(page_content='the country’s economy,\ngiven air travel is the only practical way to get in and out for nearly all travelers. I wanted to stand with\nIsrael against Hamas, by highlighting the safety of travel to Israel and urging the Obama administration to\nreverse course — which it soon did, to its credit.\nGreeting me on the tarmac that day was Prime Minister Benjamin Netanyahu. He thanked me for my\nsupport, and I thanked him for Israel’s support of New York City and the United States after the Sept. 11\nattacks. Close', metadata={'source': 'article3.txt'}), Document(page_content='partly on a relationship with the United\nStates built on shared values — freedom, equality, democracy — that can only be sustained by a\ncommitment to the rule of law, including an independent judiciary capable of upholding it. If Israel\nretreats from that long-term commitment and moves its model of governance toward one that mirrors\nthose of authoritarian countries, it risks weakening its ties to the United States and other free nations.\nThat would be a devastating loss for Israel’s security, harm prospects', metadata={'source': 'article3.txt'}), Document(page_content='partly on a relationship with the United\nStates built on shared values — freedom, equality, democracy — that can only be sustained by a\ncommitment to the rule of law, including an independent judiciary capable of upholding it. If Israel\nretreats from that long-term commitment and moves its model of governance toward one that mirrors\nthose of authoritarian countries, it risks weakening its ties to the United States and other free nations.\nThat would be a devastating loss for Israel’s security, harm prospects', metadata={'source': 'article3.txt'})]
 2023-04-07 13:54:46,698 - INFO - -----------------
-<<<<<<< HEAD
-2023-04-07 14:19:05,144 - INFO - number of documents in db: 7
-2023-04-07 14:19:34,060 - INFO - ('Where will guillaume do his internship ? ', 't h e U . S . W i t h i n t h r e')
-2023-04-07 14:19:34,098 - INFO - -----------------
-2023-04-07 14:19:39,231 - INFO - ('Where will guillaume do his internship ? ', 't h e U . S . W i t h i n t h r e')
-2023-04-07 14:19:39,261 - INFO - -----------------
-2023-04-07 14:22:39,160 - INFO - number of documents in db: 13
-2023-04-07 14:22:53,437 - INFO - ('Where will Guillaume do his internship ? ', ' Guillaume will do his internship at Acoustic Wells in GreenTown Labs.')
-2023-04-07 14:22:53,468 - INFO - -----------------
-2023-04-07 14:22:56,111 - INFO - ('Where will Guillaume do his internship ? ', ' Guillaume will do his internship at Acoustic Wells in GreenTown Labs.')
-2023-04-07 14:22:56,111 - INFO - ('Where will Guillaume do his internship ? ', " The location of Guillaume's internship is at Acoustic Wells in GreenTown Labs, a startup.")
-2023-04-07 14:22:56,126 - INFO - -----------------
-2023-04-07 14:22:58,172 - INFO - ('Where will Guillaume do his internship ? ', ' Guillaume will do his internship at Acoustic Wells in GreenTown Labs.')
-2023-04-07 14:22:58,172 - INFO - ('Where will Guillaume do his internship ? ', " The location of Guillaume's internship is at Acoustic Wells in GreenTown Labs, a startup.")
-2023-04-07 14:22:58,172 - INFO - ('Where will Guillaume do his internship ? ', ' The internship location is Greentown Labs, a startup in Boston, MA.')
-2023-04-07 14:22:58,187 - INFO - -----------------
-2023-04-07 14:25:21,950 - INFO - ('Where will Guillaume do his internship ? ', ' Guillaume will do his internship at Acoustic Wells in GreenTown Labs, a startup.')
-2023-04-07 14:25:21,950 - INFO - -----------------
-2023-04-07 14:25:28,715 - INFO - ('Where will Guillaume do his internship ? ', ' Guillaume will do his internship at Acoustic Wells, located in Greentown Labs, a startup.')
-2023-04-07 14:25:28,715 - INFO - -----------------
-2023-04-07 14:28:46,933 - INFO - number of documents in db: 19
-2023-04-07 14:28:49,345 - INFO - ('Where will Guillaume do his internship ? ', ' Guillaume will do his internship at the Acoustic Wells office located in GreenTown Labs, a startup.')
-2023-04-07 14:28:49,345 - INFO - -----------------
-2023-04-07 14:28:53,543 - INFO - ('Where will Guillaume do his internship ? ', ' Guillaume will do his internship at the Acoustic Wells office located in GreenTown Labs, a startup.')
-2023-04-07 14:28:53,543 - INFO - ('Where will Guillaume do his internship ? ', ' Acoustic Wells office is located in GreenTown Labs, a startup.')
-2023-04-07 14:28:53,543 - INFO - -----------------
-2023-04-07 14:29:05,936 - INFO - ('Where will Guillaume do his internship ? ', ' Guillaume will do his internship at the Acoustic Wells office located in GreenTown Labs, a startup.')
-2023-04-07 14:29:05,936 - INFO - ('Where will Guillaume do his internship ? ', ' Acoustic Wells office is located in GreenTown Labs, a startup.')
-2023-04-07 14:29:05,937 - INFO - ('Where will guillaume do his internship ? ', ' Boston, MA 02118')
-2023-04-07 14:29:05,937 - INFO - -----------------
-2023-04-07 14:29:06,642 - INFO - ('Where will Guillaume do his internship ? ', ' Guillaume will do his internship at the Acoustic Wells office located in GreenTown Labs, a startup.')
-2023-04-07 14:29:06,642 - INFO - ('Where will Guillaume do his internship ? ', ' Acoustic Wells office is located in GreenTown Labs, a startup.')
-2023-04-07 14:29:06,642 - INFO - ('Where will guillaume do his internship ? ', ' Boston, MA 02118')
-2023-04-07 14:29:06,642 - INFO - ('Where will guillaume do his internship ? ', ' The Acoustic Wells office is located in Greentown Labs, a startup.')
-2023-04-07 14:29:06,642 - INFO - -----------------
-2023-04-07 14:29:07,089 - INFO - ('Where will Guillaume do his internship ? ', ' Guillaume will do his internship at the Acoustic Wells office located in GreenTown Labs, a startup.')
-2023-04-07 14:29:07,089 - INFO - ('Where will Guillaume do his internship ? ', ' Acoustic Wells office is located in GreenTown Labs, a startup.')
-2023-04-07 14:29:07,089 - INFO - ('Where will guillaume do his internship ? ', ' Boston, MA 02118')
-2023-04-07 14:29:07,089 - INFO - ('Where will guillaume do his internship ? ', ' The Acoustic Wells office is located in Greentown Labs, a startup.')
-2023-04-07 14:29:07,089 - INFO - ('Where will guillaume do his internship ? ', " Guillaume's internship is located at Acoustic Wells in GreenTown Labs, a startup in Boston, MA.")
-2023-04-07 14:29:07,089 - INFO - -----------------
-2023-04-07 14:29:07,147 - INFO - ('Where will Guillaume do his internship ? ', ' Guillaume will do his internship at the Acoustic Wells office located in GreenTown Labs, a startup.')
-2023-04-07 14:29:07,147 - INFO - ('Where will Guillaume do his internship ? ', ' Acoustic Wells office is located in GreenTown Labs, a startup.')
-2023-04-07 14:29:07,147 - INFO - ('Where will guillaume do his internship ? ', ' Boston, MA 02118')
-2023-04-07 14:29:07,147 - INFO - ('Where will guillaume do his internship ? ', ' The Acoustic Wells office is located in Greentown Labs, a startup.')
-2023-04-07 14:29:07,147 - INFO - ('Where will guillaume do his internship ? ', " Guillaume's internship is located at Acoustic Wells in GreenTown Labs, a startup in Boston, MA.")
-2023-04-07 14:29:07,147 - INFO - ('Where will guillaume do his internship ? ', ' The Acoustic Wells office is located in Greentown Labs, a startup.')
-2023-04-07 14:29:07,147 - INFO - -----------------
-2023-04-07 14:29:08,012 - INFO - ('Where will Guillaume do his internship ? ', ' Guillaume will do his internship at the Acoustic Wells office located in GreenTown Labs, a startup.')
-2023-04-07 14:29:08,012 - INFO - ('Where will Guillaume do his internship ? ', ' Acoustic Wells office is located in GreenTown Labs, a startup.')
-2023-04-07 14:29:08,012 - INFO - ('Where will guillaume do his internship ? ', ' Boston, MA 02118')
-2023-04-07 14:29:08,012 - INFO - ('Where will guillaume do his internship ? ', ' The Acoustic Wells office is located in Greentown Labs, a startup.')
-2023-04-07 14:29:08,012 - INFO - ('Where will guillaume do his internship ? ', " Guillaume's internship is located at Acoustic Wells in GreenTown Labs, a startup in Boston, MA.")
-2023-04-07 14:29:08,012 - INFO - ('Where will guillaume do his internship ? ', ' The Acoustic Wells office is located in Greentown Labs, a startup.')
-2023-04-07 14:29:08,012 - INFO - ('Where will guillaume do his internship ? ', ' The Acoustic Wells office is located in GreenTown Labs, a startup.')
-2023-04-07 14:29:08,012 - INFO - -----------------
-2023-04-07 14:30:20,970 - INFO - ('Where will Guillaume do his internship ? ', ' Guillaume will do his internship at the Acoustic Wells office located in GreenTown Labs, a startup.')
-2023-04-07 14:30:20,970 - INFO - ('Where will Guillaume do his internship ? ', ' Acoustic Wells office is located in GreenTown Labs, a startup.')
-2023-04-07 14:30:20,986 - INFO - ('Where will guillaume do his internship ? ', ' Boston, MA 02118')
-2023-04-07 14:30:20,986 - INFO - ('Where will guillaume do his internship ? ', ' The Acoustic Wells office is located in Greentown Labs, a startup.')
-2023-04-07 14:30:20,986 - INFO - ('Where will guillaume do his internship ? ', " Guillaume's internship is located at Acoustic Wells in GreenTown Labs, a startup in Boston, MA.")
-2023-04-07 14:30:20,986 - INFO - ('Where will guillaume do his internship ? ', ' The Acoustic Wells office is located in Greentown Labs, a startup.')
-2023-04-07 14:30:20,986 - INFO - ('Where will guillaume do his internship ? ', ' The Acoustic Wells office is located in GreenTown Labs, a startup.')
-2023-04-07 14:30:20,986 - INFO - ('Where will guillaume do his internship ? ', ' The Acoustic Wells office is located in GreenTown Labs.')
-2023-04-07 14:30:20,986 - INFO - -----------------
-2023-04-07 14:30:22,736 - INFO - ('Where will Guillaume do his internship ? ', ' Guillaume will do his internship at the Acoustic Wells office located in GreenTown Labs, a startup.')
-2023-04-07 14:30:22,736 - INFO - ('Where will Guillaume do his internship ? ', ' Acoustic Wells office is located in GreenTown Labs, a startup.')
-2023-04-07 14:30:22,736 - INFO - ('Where will guillaume do his internship ? ', ' Boston, MA 02118')
-2023-04-07 14:30:22,736 - INFO - ('Where will guillaume do his internship ? ', ' The Acoustic Wells office is located in Greentown Labs, a startup.')
-2023-04-07 14:30:22,736 - INFO - ('Where will guillaume do his internship ? ', " Guillaume's internship is located at Acoustic Wells in GreenTown Labs, a startup in Boston, MA.")
-2023-04-07 14:30:22,736 - INFO - ('Where will guillaume do his internship ? ', ' The Acoustic Wells office is located in Greentown Labs, a startup.')
-2023-04-07 14:30:22,736 - INFO - ('Where will guillaume do his internship ? ', ' The Acoustic Wells office is located in GreenTown Labs, a startup.')
-2023-04-07 14:30:22,736 - INFO - ('Where will guillaume do his internship ? ', ' The Acoustic Wells office is located in GreenTown Labs.')
-2023-04-07 14:30:22,736 - INFO - ('Where will guillaume do his internship ? ', ' The Acoustic Wells office is located in GreenTown Labs, a startup.')
-2023-04-07 14:30:22,736 - INFO - -----------------
-2023-04-07 14:32:55,036 - INFO - number of documents in db: 25
-2023-04-07 14:33:01,309 - INFO - ('Where will guillaume do his internship ? ', ' Guillaume will do his internship at Acoustic Wells in Boston, MA.')
-2023-04-07 14:33:01,309 - INFO - -----------------
-2023-04-07 14:34:26,739 - INFO - number of documents in db: 31
-2023-04-07 14:34:32,168 - INFO - ('Where will guillaume do his internship ? ', ' Guillaume will do his internship at Acoustic Wells in Boston, MA, from July 31st, 2023 to January 26th, 2024.')
-2023-04-07 14:34:32,168 - INFO - -----------------
-=======
 2023-04-07 13:57:52,333 - INFO - ('tell me about economic suffering', 'not enough information')
 2023-04-07 13:57:52,334 - INFO - []
 2023-04-07 13:57:52,334 - INFO - -----------------
@@ -130,4 +48,3 @@ THE EDITORIA
 2023-04-07 14:11:48,933 - INFO - [Document(page_content='allies bound together by shared values stand together in times of need — not only to\nsupport each other but to reaffirm the inviolable obligations we have to defend those values. And that is\nwhy I am standing up again now.', metadata={'source': 'article3.txt'}), Document(page_content='allies bound together by shared values stand together in times of need — not only to\nsupport each other but to reaffirm the inviolable obligations we have to defend those values. And that is\nwhy I am standing up again now.', metadata={'source': 'article3.txt'}), Document(page_content='the country’s economy,\ngiven air travel is the only practical way to get in and out for nearly all travelers. I wanted to stand with\nIsrael against Hamas, by highlighting the safety of travel to Israel and urging the Obama administration to\nreverse course — which it soon did, to its credit.\nGreeting me on the tarmac that day was Prime Minister Benjamin Netanyahu. He thanked me for my\nsupport, and I thanked him for Israel’s support of New York City and the United States after the Sept. 11\nattacks. Close', metadata={'source': 'article3.txt'}), Document(page_content='the country’s economy,\ngiven air travel is the only practical way to get in and out for nearly all travelers. I wanted to stand with\nIsrael against Hamas, by highlighting the safety of travel to Israel and urging the Obama administration to\nreverse course — which it soon did, to its credit.\nGreeting me on the tarmac that day was Prime Minister Benjamin Netanyahu. He thanked me for my\nsupport, and I thanked him for Israel’s support of New York City and the United States after the Sept. 11\nattacks. Close', metadata={'source': 'article3.txt'})]
 2023-04-07 14:11:48,933 - INFO - -----------------
 2023-04-07 14:14:45,917 - INFO - number of documents in db: 140
->>>>>>> 3fdac6c60f2d37e0f9d7daa6869de8bdc8d2d531
