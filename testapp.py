@@ -38,11 +38,13 @@ def testquestion(question = None):
     if response.ok:
         response_data = json.loads(response.content)
         processed_text = response_data['processed_text']
+        sources = response_data['page_contents']
         print(processed_text)
+        print(sources + '\n')
     else:
         print(f'Request failed with status code {response.status_code}')
 
 
 
 if __name__=="__main__":
-    testquestion('tell me about economic suffering')
+    testquestion('what is the USAs main ally')

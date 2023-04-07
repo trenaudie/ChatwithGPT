@@ -10,9 +10,11 @@ from langchain.embeddings import OpenAIEmbeddings
 import json
 from utils.logger import logger
 
-os.environ['OPENAI_API_KEY'] = "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"
+from config import Config
+
+os.environ['OPENAI_API_KEY'] = Config.openai_api_key
 print(os.environ['OPENAI_API_KEY'])
-os.environ['HUGGINGFACEHUB_API_TOKEN'] = "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"
+os.environ['HUGGINGFACEHUB_API_TOKEN'] = Config.huggingface_hub_api_key
 
 
 def getattributes(obj): return [attr for attr in dir(
@@ -67,6 +69,7 @@ def answerQuestion():
     try:
         data = request.get_json()
         question = data['text']
+        print("received question ", question)
         #only add chat_history if conversationalRetriever
         answer = chain({'question': question, 'chat_history': chat_history})
         chat_history.append((question, answer['answer']))
@@ -85,7 +88,7 @@ def answerQuestion():
         response_data = {
             'processed_text': answer['answer'],
             'page_contents': page_contents_json
-}
+        }
         return jsonify(response_data)
     
     except Exception as e:
