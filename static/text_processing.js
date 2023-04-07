@@ -16,6 +16,7 @@ document.getElementById('text-form').addEventListener('submit', async (e) => {
             body: JSON.stringify({ text: userInput }),
         });
 
+
         if (response.ok) {
             const responseData = await response.json();
             console.log('Response data:', responseData); // Add this line
@@ -29,6 +30,6 @@ document.getElementById('text-form').addEventListener('submit', async (e) => {
         }
     } catch (error) {
         console.error('Error:', error);
-        responseDiv.innerText = 'Error processing the text.';
+        responseDiv.innerText = 'Python Error processing the text.';
     }
 });

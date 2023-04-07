@@ -33,7 +33,8 @@ PROMPT = PromptTemplate(
 )
 
 chat_history = []
-vectordb = Chroma(persist_directory='dbdir',embedding_function=OpenAIEmbeddings())
+vectordb = Chroma(persist_directory='dbdir',
+                  embedding_function=OpenAIEmbeddings())
 chain = get_chain(vectordb, PROMPT)
 print(vectordb._collection.metadata)
 
@@ -55,7 +56,8 @@ def upload_file():
         # Process the file and save it to the database
         # You will need to implement this part based on the type of database you are using
         save_file_to_database(vectordb, filepath)
-        logger.info(f"number of documents in db: {vectordb._collection._client._count('langchain')}")
+        logger.info(
+            f"number of documents in db: {vectordb._collection._client._count('langchain')}")
         # Remove the temporary file
         os.remove(filepath)
 
@@ -69,17 +71,17 @@ def answerQuestion():
     try:
         data = request.get_json()
         question = data['text']
-        print("received question ", question)
-        #only add chat_history if conversationalRetriever
+        # only add chat_history if conversationalRetriever
         answer = chain({'question': question, 'chat_history': chat_history})
         chat_history.append((question, answer['answer']))
 
         for k in chat_history:
             logger.info(k)
-        
+
         logger.info(answer['source_documents'])
         logger.info('-----------------')
-        page_contents = [doc.page_content for doc in answer['source_documents']]
+        page_contents = [
+            doc.page_content for doc in answer['source_documents']]
 
         # Convert the list of page contents to a JSON object
         page_contents_json = json.dumps(page_contents)
@@ -90,7 +92,7 @@ def answerQuestion():
             'page_contents': page_contents_json
         }
         return jsonify(response_data)
-    
+
     except Exception as e:
         # Log the full traceback of the exception
         print(traceback.format_exc())
@@ -99,4 +101,3 @@ def answerQuestion():
 
 if __name__ == '__main__':
     app.run(port=5006, debug=True)
-
