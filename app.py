@@ -12,9 +12,11 @@ from utils.logger import logger
 from utils.database_management import read_file_list
 from config import Config
 
+from config import Config
+
 os.environ['OPENAI_API_KEY'] = Config.openai_api_key
 print(os.environ['OPENAI_API_KEY'])
-os.environ['HUGGINGFACEHUB_API_TOKEN'] = "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"
+os.environ['HUGGINGFACEHUB_API_TOKEN'] = Config.huggingface_hub_api_key
 
 
 def getattributes(obj): return [attr for attr in dir(
@@ -33,10 +35,10 @@ PROMPT = PromptTemplate(
 )
 
 chat_history = []
+list_of_files = read_file_list()
 vectordb = Chroma(persist_directory='dbdir',
                   embedding_function=OpenAIEmbeddings())
 chain = get_chain(vectordb, PROMPT)
-list_of_files = read_file_list()
 print(vectordb._collection.metadata)
 
 
@@ -52,7 +54,6 @@ def upload_file():
         # Save the file temporarily
         filename = secure_filename(uploaded_file.filename)
         list_of_files.append(filename)
-
         filepath = os.path.join('temp', filename)
         uploaded_file.save(filepath)
 
@@ -67,6 +68,13 @@ def upload_file():
         return 'File uploaded and saved to the database.', 200
     else:
         return 'No file was uploaded.', 400
+
+
+@app.route('/update_file_list')
+def update_file_list():
+    list_of_files = read_file_list()
+
+    return jsonify({'lines': list_of_files})
 
 
 @app.route('/qa', methods=['POST'])
