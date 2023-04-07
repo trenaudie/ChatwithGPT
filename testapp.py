@@ -1,5 +1,7 @@
 import requests, json
 
+
+
 def checkrequest(method: str, path: str, status: int, content: str = None, **kwargs):
     """Checks if the request to localhost returns the expected response"""
     url = f'http://localhost:5005{path}'
@@ -30,7 +32,7 @@ def testquestion(question = None):
     if not question:
         question = 'What is the capital of France?'
     data = {'text': question}
-    url = 'http://localhost:5005/qa'
+    url = 'http://localhost:5006/qa'
 
     response = requests.post(url, headers=headers, data=json.dumps(data))
     if response.ok:
@@ -40,5 +42,7 @@ def testquestion(question = None):
     else:
         print(f'Request failed with status code {response.status_code}')
 
+
+
 if __name__=="__main__":
-    testquestion('tell me about israel')
+    testquestion('tell me about economic suffering')

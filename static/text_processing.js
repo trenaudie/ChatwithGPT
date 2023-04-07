@@ -2,7 +2,7 @@ document.getElementById('text-form').addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const userInput = document.getElementById('user-input').value;
-    const responseDiv = document.getElementById('text-response');
+    const responseDiv = document.getElementById('chat-output');
 
     if (!userInput) {
         responseDiv.innerText = 'Please enter some text.';
@@ -10,7 +10,7 @@ document.getElementById('text-form').addEventListener('submit', async (e) => {
     }
 
     try {
-        const response = await fetch('/process_text', {
+        const response = await fetch('/qa', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text: userInput }),
@@ -19,6 +19,7 @@ document.getElementById('text-form').addEventListener('submit', async (e) => {
         if (response.ok) {
             const responseData = await response.json();
             console.log('Response data:', responseData); // Add this line
+
             const processedText = responseData.answer;
             responseDiv.innerText = processedText;
 
