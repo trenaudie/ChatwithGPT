@@ -2,11 +2,11 @@ import React from 'react';
 import './NavigationBar.css';
 import './FileUpload.js'
 import FileUpload from './FileUpload.js';
-function NavigationBar({ sources, setSources }) {
+function NavigationBar({ Sources, setSources }) {
   const handleSourceSubmit = (event) => {
     event.preventDefault();
     const newSource = event.target.sourceInput.value;
-    setSources([...sources, newSource]);
+    setSources([...Sources, newSource]);
     event.target.sourceInput.value = '';
   };
 
@@ -15,7 +15,7 @@ function NavigationBar({ sources, setSources }) {
       <form onSubmit={handleSourceSubmit}>
         <label htmlFor="sourceInput">Sources:</label>
         <ul>
-          {sources.map((source, index) => (
+          {Sources.map((source, index) => (
             <li key={index}>{source}</li>
           ))}
         </ul>

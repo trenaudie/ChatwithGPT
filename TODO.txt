@@ -1,23 +1,10 @@
-- update getChunks. From a number of temp .txt files, split using character splitter, and yield a list of Documents. like in testingTanguy
-    - use chat-langchain ingest.py as a template
+- React make it look goooood
+- ChatwithPDF inspiration, with chat bubbles. One with the answer, one with the sources.
+- Navigation bar on the left, whole pane. With a list of sources, that you can click 
+- 
 
-- find way to get more or less text, 
-- to query for top k in similarity score, or 
-- to query from the above x similarity score.
+- Pinecone
 
-
-  npm start
-    Starts the development server.
-  npm run build
-    Bundles the app into static files for production.
-  npm test
-    Starts the test runner.
-  npm run eject
-    Removes this tool and copies build dependencies, configuration files
-    and scripts into the app directory. If you do this, you can’t go back!
-We suggest that you begin by typing:
-  cd my-app
-  npm start
 
 References :
 https://github.com/hwchase17/chroma-langchain/blob/master/persistent-qa.ipynb

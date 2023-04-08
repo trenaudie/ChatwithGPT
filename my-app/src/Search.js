@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Search({ setChatMessages }) {
+function Search({ setBotMessages, setUserMessages }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearchInputChange = (event) => {
@@ -10,7 +10,22 @@ function Search({ setChatMessages }) {
   const handleSearchSubmit = (event) => {
     event.preventDefault();
     // Add code here to handle search submission and update chat messages
-    setChatMessages([]);
+    setUserMessages((chatMessages) => [...chatMessages, searchTerm]);
+    const formData = new FormData();
+    formData.append("searchTerm", searchTerm);
+    //send POST request with searchTerm as body
+    const backendURL = "http://localhost:5006";
+    fetch("/qa", {
+        method: "POST",
+        body: formData
+      })
+        .then((response) => {console.log("response", response); return response.json();})
+        .then((data) => {
+            setBotMessages((BotMessages) => {console.log('data: ', data);return [...BotMessages, data['answer'], data['source_documents']]});
+        })
+        .catch((error) => {
+          console.error("Error uploading question:", error);
+        });
   };
 
   return (

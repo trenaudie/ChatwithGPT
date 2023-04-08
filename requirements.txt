@@ -39,6 +39,7 @@ fastapi==0.95.0
 ffmpeg-python==0.2.0
 filelock==3.10.7
 Flask==2.2.3
+Flask-Cors==3.0.10
 frozenlist @ file:///Users/runner/miniforge3/conda-bld/frozenlist_1667935502123/work
 future==0.18.3
 gitdb==4.0.10

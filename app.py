@@ -9,10 +9,8 @@ from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
 import json
 from utils.logger import logger
-from utils.database_management import read_file_list
 from config import Config
-
-from config import Config
+from flask_cors import CORS
 
 os.environ['OPENAI_API_KEY'] = Config.openai_api_key
 print(os.environ['OPENAI_API_KEY'])
@@ -24,6 +22,8 @@ def getattributes(obj): return [attr for attr in dir(
 
 
 app = Flask(__name__)
+CORS(app,  origins = ["http://localhost:3000"])
+
 
 prompt_template = """Use the context below to write a 100 word blog post about the topic below:
     Context: {context}
@@ -35,7 +35,7 @@ PROMPT = PromptTemplate(
 )
 
 chat_history = []
-list_of_files = read_file_list()
+list_of_files = ['file1', 'file2', 'file3', 'file4']
 vectordb = Chroma(persist_directory='dbdir',
                   embedding_function=OpenAIEmbeddings())
 chain = get_chain(vectordb, PROMPT)
@@ -80,26 +80,27 @@ def update_file_list():
 @app.route('/qa', methods=['POST'])
 def answerQuestion():
     try:
-        data = request.get_json()
-        question = data['text']
+        question = request.form['searchTerm']
         # only add chat_history if conversationalRetriever
         answer = chain({'question': question, 'chat_history': chat_history})
         chat_history.append((question, answer['answer']))
 
-        for k in chat_history:
-            logger.info(k)
-
+        # for k in chat_history:
+        #     logger.info(k)
+        logger.info((question, answer['answer']))
+        logger.info(len(answer['source_documents']))
+        for sourceDoc in answer['source_documents']:
+            logger.info(sourceDoc.page_content)
         logger.info('-----------------')
-        page_contents = [
-            doc.page_content for doc in answer['source_documents']]
+        source_contents = [
+            sourceDoc.page_content for sourceDoc in answer['source_documents']]
 
         # Convert the list of page contents to a JSON object
-        page_contents_json = json.dumps(page_contents)
 
         # Combine the `processed_text` and `page_content` JSON objects into a single dictionary
         response_data = {
-            'processed_text': answer['answer'],
-            'page_contents': page_contents_json
+            'answer': answer['answer'],
+            'source_documents': source_contents
         }
         return jsonify(response_data)
 

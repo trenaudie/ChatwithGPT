@@ -26,5 +26,5 @@ def get_chain(vectorstore: VectorStore, prompt: PromptTemplate) -> ChatVectorDBC
     #llmGPT4all = GPT4All(model=path_to_ggml)
     openai = OpenAI()
     qa = ConversationalRetrievalChain.from_llm(
-        openai, vectorstore.as_retriever(), return_source_documents=True)
+        llmHugging, vectorstore.as_retriever(), return_source_documents=True)
     return qa
